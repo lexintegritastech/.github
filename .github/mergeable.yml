@@ -3,19 +3,18 @@
 defaults:
   checks_failure_payload: &checks_failure_payload
     title: 'Mergeable Run have been Completed!'
-    summary: |
-          ### Status: {{toUpperCase validationStatus}}
+    summary: '### Status: {{toUpperCase validationStatus}}
               Here are some stats of the run:
               {{validationCount}} validations were ran.
               {{passCount}} PASSED
-              {{failCount}} FAILED
-    text: "{{#each validationSuites}}\n
+              {{failCount}} FAILED'
+    text: '{{#each validationSuites}}\n
           #### {{{statusIcon status}}} Validator: {{toUpperCase name}}\n
           {{#each validations }} * {{{statusIcon status}}} ***{{{ description }}}***\n
                   Input : {{{details.input}}}\n
                   Settings : {{{displaySettings details.settings}}}\n
                   {{/each}}\n
-          {{/each}}"
+          {{/each}}'
 
 version: 2
 mergeable:
@@ -25,14 +24,13 @@ mergeable:
       - do: description
         no_empty:
           enabled: true
-          message: Description is necessary and should not be empty. Kindly provide details with **what** was changed, **why** it was changed, and **how** it was changed.
     fail:
       - do: checks
         status: 'failure'
         payload: *checks_failure_payload
       - do: comment
         payload:
-          body: Description is necessary and should not be empty. Kindly provide details with **what** was changed, **why** it was changed, and **how** it was changed.
+          body: 'Description is necessary and should not be empty. Kindly provide details with **what** was changed, **why** it was changed, and **how** it was changed.'
   - when: pull_request.*, pull_request_review.*
     name: 'Validate Pull Request Title'
     validate:
@@ -45,7 +43,7 @@ mergeable:
         payload: *checks_failure_payload
       - do: comment
         payload:
-          body: Title is necessary and should not be empty. 
+          body: 'Title is necessary and should not be empty.'
   - when: pull_request.*, pull_request_review.*
     name: 'Validate Pull Request Size'
     validate:
@@ -55,14 +53,13 @@ mergeable:
         lines:
           max:
             count: 500
-            message: Lines of code have too many changes. It should be under 500 lines of addtions and deletions.
     fail:
       - do: checks
         status: 'failure'
         payload: *checks_failure_payload
       - do: comment
         payload: 
-          body: Lines of code have too many changes. It should be under 500 lines of addtions and deletions.
+          body: 'Lines of code have too many changes. It should be under 500 lines of addtions and deletions.'
   - when: pull_request.*, pull_request_review.*
     name: 'Validate Pull Request has one or more assignees'
     validate:
@@ -75,7 +72,7 @@ mergeable:
         payload: *checks_failure_payload
       - do: comment
         payload: 
-          body: One or more assignees are required. Kindly add one or more assignees for this pull request.
+          body: 'One or more assignees are required. Kindly add one or more assignees for this pull request.'
   - when: pull_request.*, pull_request_review.*
     name: 'Ensure Pull Request has been approved'
     validate:
