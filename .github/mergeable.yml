@@ -61,7 +61,8 @@ mergeable:
         status: 'failure'
         payload: *checks_failure_payload
       - do: comment
-        payload: Lines of code have too many changes. It should be under 500 lines of addtions and deletions.
+        payload: 
+          body: Lines of code have too many changes. It should be under 500 lines of addtions and deletions.
   - when: pull_request.*, pull_request_review.*
     name: 'Validate Pull Request has one or more assignees'
     validate:
@@ -73,7 +74,8 @@ mergeable:
         status: 'failure'
         payload: *checks_failure_payload
       - do: comment
-        payload: One or more assignees are required. Kindly add one or more assignees for this pull request.
+        payload: 
+          body: One or more assignees are required. Kindly add one or more assignees for this pull request.
   - when: pull_request.*, pull_request_review.*
     name: 'Ensure Pull Request has been approved'
     validate:
