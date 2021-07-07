@@ -70,9 +70,8 @@ mergeable:
       - do: checks
         status: 'failure'
         payload: *checks_failure_payload
-      - do: comment
-        payload: 
-          body: 'One or more assignees are required. Kindly add one or more assignees for this pull request.'
+      - do: assign
+        assignees: [ '@author' ]
   - when: pull_request.*, pull_request_review.*
     name: 'Ensure Pull Request has been approved'
     validate:
