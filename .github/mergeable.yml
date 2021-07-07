@@ -78,6 +78,9 @@ mergeable:
       - do: approvals
         min:
           count: 1
+    fail:
+      - do: request_review
+        reviewers: [ 'tenshiAMD' ]
   - when: pull_request.*, pull_request_review.*
     name: 'Restrict Pull Request as Work in Progress'
     validate:
