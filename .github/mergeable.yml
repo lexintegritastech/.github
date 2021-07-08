@@ -87,7 +87,18 @@ mergeable:
     validate:
       - do: label
         must_exclude:
-          regex: 'wip'
-      - do: title
-        must_exclude:
-          regex: ^\[WIP\]
+          regex: 'work in progress'
+  - when: pull_request.opened, pull_request.reopened
+    name: 'Set labels for Pull Request'
+    validate:
+      - do: label
+        no_empty:
+          enabled: true
+    pass:
+      - do: labels
+        labels: [ 'work in progress' ]
+        mode: 'add'
+    fail:
+      - do: labels
+        labels: [ 'work in progress' ]
+        mode: 'add'
