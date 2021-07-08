@@ -79,6 +79,8 @@ mergeable:
       - do: approvals
         min:
           count: 1
+        limit:
+          users: [ 'tenshiAMD' ]
     fail:
       - do: checks
         status: 'failure'
