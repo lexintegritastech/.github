@@ -79,6 +79,13 @@ mergeable:
       - do: approvals
         min:
           count: 1
+    pass:
+      - do: labels
+        labels: [ 'work in progress' ]
+        mode: 'delete'
+      - do: labels
+        labels: [ 'ready for merging' ]
+        mode: 'add'
     fail:
       - do: request_review
         reviewers: [ 'tenshiAMD' ]
