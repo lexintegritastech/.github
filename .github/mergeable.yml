@@ -104,3 +104,10 @@ mergeable:
       - do: labels
         labels: [ 'work in progress' ]
         mode: 'add'
+  - when: pull_request.closed
+    name: "Remove unnecessary labels when pull request is closed"
+    validate: []
+    pass:
+      - do: labels
+        labels: [ 'work in progress', 'ready for merging' ]
+        mode: 'delete'
