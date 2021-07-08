@@ -80,6 +80,9 @@ mergeable:
         min:
           count: 1
     fail:
+      - do: checks
+        status: 'failure'
+        payload: *checks_failure_payload
       - do: request_review
         reviewers: [ 'tenshiAMD' ]
   - when: pull_request.*, pull_request_review.*
