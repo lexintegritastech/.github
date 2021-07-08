@@ -73,7 +73,7 @@ mergeable:
         payload: *checks_failure_payload
       - do: assign
         assignees: [ '@author' ]
-  - when: pull_request.*, pull_request_review.*
+  - when: pull_request.assigned, pull_request.opened, pull_request.synchronize, pull_request.reopened, pull_request_review.*
     name: 'Ensure Pull Request has been approved'
     validate:
       - do: approvals
