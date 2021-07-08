@@ -95,10 +95,7 @@ mergeable:
           regex: 'work in progress'
   - when: pull_request.opened, pull_request.reopened
     name: 'Set labels for Pull Request'
-    validate:
-      - do: label
-        no_empty:
-          enabled: true
+    validate: []
     pass:
       - do: labels
         labels: [ 'work in progress' ]
