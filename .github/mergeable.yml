@@ -80,13 +80,13 @@ mergeable:
         min:
           count: 1
         limit:
-          users: [ 'tenshiAMD' ]
+          users: [ 'jobaqs' ]
     fail:
       - do: checks
         status: 'failure'
         payload: *checks_failure_payload
       - do: request_review
-        reviewers: [ 'tenshiAMD' ]
+        reviewers: [ 'jobaqs' ]
   - when: pull_request.*, pull_request_review.*
     name: 'Restrict Pull Request as Work in Progress'
     validate:
