@@ -80,7 +80,7 @@ mergeable:
         min:
           count: 1
         limit:
-          users: [ 'tenshiAMD' ]
+          users: [ 'gerome0123' ]
     fail:
       - do: checks
         status: 'failure'
