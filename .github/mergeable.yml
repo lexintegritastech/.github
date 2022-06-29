@@ -86,7 +86,7 @@ mergeable:
         status: 'failure'
         payload: *checks_failure_payload
       - do: request_review
-        reviewers: [ 'tenshiAMD' ]
+        reviewers: [ 'gerome0123' ]
   - when: pull_request.*, pull_request_review.*
     name: 'Restrict Pull Request as Work in Progress'
     validate:
